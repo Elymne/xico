@@ -13,8 +13,8 @@ class Definition {
   factory Definition.fromJson(Map<String, dynamic> json) {
     return Definition(
       definition: json["definition"],
-      synonyms: ["gnéééé"],
-      example: "emplllll",
+      synonyms: json["synonyms"],
+      example: json["example"],
     );
   }
 }

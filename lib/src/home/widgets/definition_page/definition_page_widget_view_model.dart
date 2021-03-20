@@ -11,7 +11,7 @@ class DefinitionPageWidgetViewModel extends BaseViewModel {
 
   void onTextFieldUpdated(String text) {
     definitionRepository.fetchDogDefinitions().then((value) {
-      log('data: ${value[0].definition}');
+      log('data: ${value[0].genre}');
     }).catchError((onError) {
       log('data: $onError');
     });
