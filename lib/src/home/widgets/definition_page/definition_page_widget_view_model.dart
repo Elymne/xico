@@ -1,17 +1,22 @@
 import 'package:stacked/stacked.dart';
-import 'package:xico/src/definitions/infrastructures/defintion_repository.dart';
+import 'package:xico/src/meanings/infrastructures/meaning_repository.dart';
 import 'dart:developer';
 
+import 'package:xico/src/meanings/models/meaning.dart';
+
 class DefinitionPageWidgetViewModel extends BaseViewModel {
-  String _title = "Home View";
-  String get title => _title;
+  List<Meaning> _meanings;
+  List<Meaning> get meanings => _meanings;
 
 //todo Peut-être faire de l'injection de dépendance ici.
   DefinitionRepository definitionRepository = DefinitionRepository();
 
-  void onTextFieldUpdated(String text) {
-    definitionRepository.fetchDogDefinitions().then((value) {
-      log('data: ${value[0].genre}');
+  void onDefinitionSearchFieldUpdated(String text) {
+    definitionRepository.fetchDefinitions(text).then((data) {
+      log(data[0].definitions[0].definition);
+
+      _meanings = data;
+      notifyListeners();
     }).catchError((onError) {
       log('data: $onError');
     });

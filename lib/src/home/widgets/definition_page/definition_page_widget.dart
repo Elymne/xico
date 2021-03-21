@@ -17,7 +17,7 @@ class DefinitionPageWidget extends StatelessWidget {
                     border: OutlineInputBorder(),
                     hintText: 'Cherchez une définition'),
                 onChanged: (text) {
-                  model.onTextFieldUpdated(text);
+                  model.onDefinitionSearchFieldUpdated(text);
                 },
               ),
             ),

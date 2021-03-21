@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Definition {
   final String definition;
-  final List<String> synonyms;
+  final List<dynamic> synonyms;
   final String example;
 
   Definition(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:xico/src/definitions/models/definition.dart';
+import 'package:xico/src/meanings/models/definition.dart';
 
 class Meaning {
   final String genre;
@@ -9,8 +9,8 @@ class Meaning {
 
   factory Meaning.fromJson(Map<String, dynamic> json) {
     return Meaning(
-      genre: json["partOfSpeech"],
-      definitions: json["definitions"]
+      genre: json["meanings"][0]["partOfSpeech"],
+      definitions: json["meanings"][0]["definitions"]
           .map<Definition>((elem) => Definition.fromJson(elem))
           .toList(),
     );

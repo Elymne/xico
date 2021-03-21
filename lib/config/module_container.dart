@@ -1,10 +1,9 @@
 import 'package:flutter_simple_dependency_injection/injector.dart';
-//import 'package:xico/src/definitions/models/definition.dart';
+import 'package:xico/src/meanings/infrastructures/meaning_repository.dart';
 
 class ModuleContainer {
   Injector initialise(Injector injector) {
-    //injector.map<Definition>((injector) => Definition());
-
+    injector.map<DefinitionRepository>((injector) => DefinitionRepository());
     return injector;
   }
 }
