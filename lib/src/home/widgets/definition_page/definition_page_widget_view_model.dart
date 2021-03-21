@@ -1,3 +1,4 @@
+import 'package:flutter_simple_dependency_injection/injector.dart';
 import 'package:stacked/stacked.dart';
 import 'package:xico/src/meanings/infrastructures/meaning_repository.dart';
 import 'dart:developer';
@@ -8,8 +9,8 @@ class DefinitionPageWidgetViewModel extends BaseViewModel {
   List<Meaning> _meanings;
   List<Meaning> get meanings => _meanings;
 
-//todo Peut-être faire de l'injection de dépendance ici.
-  DefinitionRepository definitionRepository = DefinitionRepository();
+  DefinitionRepository definitionRepository =
+      Injector.getInjector().get<DefinitionRepository>();
 
   void onDefinitionSearchFieldUpdated(String text) {
     definitionRepository.fetchDefinitions(text).then((data) {

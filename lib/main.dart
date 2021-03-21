@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_simple_dependency_injection/injector.dart';
+import 'package:xico/config/module_container.dart';
 import 'package:xico/config/router.dart';
 
 void main() {
+  // Init Injector.
+  ModuleContainer().initialise(Injector.getInjector());
+
   // Defines all routes on init.
   RouterFluro.defineRoutes();
   // Launch app.
