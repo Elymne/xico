@@ -1,25 +1,32 @@
 import 'package:flutter_simple_dependency_injection/injector.dart';
 import 'package:stacked/stacked.dart';
+import 'package:xico/src/home/widgets/definition_card/definition_card.dart';
 import 'package:xico/src/meanings/infrastructures/meaning_repository.dart';
+import 'package:xico/src/meanings/models/meaning.dart';
 import 'dart:developer';
 
-import 'package:xico/src/meanings/models/meaning.dart';
-
 class DefinitionPageWidgetViewModel extends BaseViewModel {
-  List<Meaning> _meanings;
-  List<Meaning> get meanings => _meanings;
+  List<DefinitionCard> _definitionCards = [];
+  List<DefinitionCard> get definitionCards => _definitionCards = [];
 
   DefinitionRepository definitionRepository =
       Injector.getInjector().get<DefinitionRepository>();
 
   void onDefinitionSearchFieldUpdated(String text) {
     definitionRepository.fetchDefinitions(text).then((data) {
-      log(data[0].definitions[0].definition);
-
-      _meanings = data;
-      notifyListeners();
+      _updateDefinitionCards(data);
     }).catchError((onError) {
       log('data: $onError');
     });
+  }
+
+  void _updateDefinitionCards(List<Meaning> meanings) {
+    _definitionCards.clear();
+    meanings.forEach((element) {
+      _definitionCards.add(
+        DefinitionCard(definitions: element.definitions),
+      );
+    });
+    notifyListeners();
   }
 }
