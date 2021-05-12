@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:xico/src/books/views/book_page_widget.dart';
-import 'package:xico/src/definitions/views/definition_page_widget.dart';
+import 'package:xico/src/definitions/views/definition_page.dart';
 import 'package:xico/src/home/views/home_view_model.dart';
 
 /**
@@ -18,7 +18,7 @@ class HomeViewBis extends StatelessWidget {
         ),
         body: PageView(
           children: <Widget>[
-            DefinitionPageView(),
+            DefinitionPage(),
             BookPageView(),
           ],
         ),

@@ -4,7 +4,7 @@ import 'package:xico/core/meanings/infrastructures/meaning_repository.dart';
 import 'package:xico/core/meanings/models/meaning.dart';
 import 'dart:developer';
 
-class DefinitionPageWidgetViewModel extends BaseViewModel {
+class DefinitionPageViewModel extends BaseViewModel {
   DefinitionRepository definitionRepository =
       Injector.getInjector().get<DefinitionRepository>();
 

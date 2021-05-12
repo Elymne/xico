@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:xico/src/definitions/views/definition_page_widget_view_model.dart';
+import 'package:xico/src/definitions/views/definition_page_view_model.dart';
 import 'package:xico/src/definitions/widgets/definition_card/definition_card.dart';
 
-class DefinitionPageView extends StatefulWidget {
+class DefinitionPage extends StatefulWidget {
   @override
-  _DefinitionPageViewState createState() => _DefinitionPageViewState();
+  _DefinitionPageState createState() => _DefinitionPageState();
 }
 
-class _DefinitionPageViewState extends State<DefinitionPageView> {
+class _DefinitionPageState extends State<DefinitionPage> {
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<DefinitionPageWidgetViewModel>.reactive(
+    return ViewModelBuilder<DefinitionPageViewModel>.reactive(
       builder: (context, model, child) => Column(
         children: [
           Container(
@@ -39,7 +39,7 @@ class _DefinitionPageViewState extends State<DefinitionPageView> {
           ),
         ],
       ),
-      viewModelBuilder: () => DefinitionPageWidgetViewModel(),
+      viewModelBuilder: () => DefinitionPageViewModel(),
     );
   }
 }
