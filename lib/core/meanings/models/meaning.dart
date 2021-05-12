@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:xico/src/meanings/models/definition.dart';
+import 'package:xico/core/meanings/models/definition.dart';
 
 class Meaning {
   final String genre;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:xico/src/home/widgets/book_page/book_page_widget_view_model.dart';
+import 'package:xico/src/books/views/book_page_widget_view_model.dart';
 
-class BookPageWidget extends StatelessWidget {
+class BookPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<BookPageWidgetViewModel>.reactive(

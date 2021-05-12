@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:xico/src/home/widgets/definition_page/definition_page_widget_view_model.dart';
+import 'package:xico/src/definitions/views/definition_page_widget_view_model.dart';
+import 'package:xico/src/definitions/widgets/definition_card/definition_card.dart';
 
-class DefinitionPageWidget extends StatefulWidget {
+class DefinitionPageView extends StatefulWidget {
   @override
-  _DefinitionPageWidgetState createState() => _DefinitionPageWidgetState();
+  _DefinitionPageViewState createState() => _DefinitionPageViewState();
 }
 
-class _DefinitionPageWidgetState extends State<DefinitionPageWidget> {
+class _DefinitionPageViewState extends State<DefinitionPageView> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<DefinitionPageWidgetViewModel>.reactive(
@@ -27,15 +28,13 @@ class _DefinitionPageWidgetState extends State<DefinitionPageWidget> {
             ),
           ),
           Expanded(
-            child: model.definitionCards.isEmpty
+            child: model.meanings.isEmpty
                 ? Center(child: CircularProgressIndicator())
                 : ListView.builder(
-                    itemCount: model.definitionCards.length,
+                    itemCount: model.meanings.length,
                     itemBuilder: (context, index) {
-                      return model.definitionCards[index];
+                      return DefinitionCard(meaning: model.meanings[index]);
                     },
-                    //scrollDirection: Axis.vertical,
-                    //children: model.definitionCards,
                   ),
           ),
         ],

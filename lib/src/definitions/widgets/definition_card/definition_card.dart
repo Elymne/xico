@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:xico/src/home/widgets/definition_card/definition_card_view_model.dart';
-import 'package:xico/src/meanings/models/definition.dart';
+import 'package:xico/core/meanings/models/meaning.dart';
+import 'package:xico/src/definitions/widgets/definition_card/definition_card_view_model.dart';
 
 class DefinitionCard extends StatelessWidget {
-  final List<Definition> definitions;
+  final Meaning meaning;
 
   DefinitionCard({
-    @required this.definitions,
+    @required this.meaning,
   });
 
   @override
@@ -25,11 +25,15 @@ class DefinitionCard extends StatelessWidget {
   List<ListTile> _createDefinitionElements() {
     List<ListTile> result = [];
 
-    this.definitions.forEach((element) {
+    this.meaning.definitions.forEach((element) {
       result.add(ListTile(
         leading: Icon(Icons.album),
-        title: Text(element.definition),
-        subtitle: Text(element.example),
+        title: Text(element.definition != null
+            ? element.definition
+            : "(données non trouvées)"),
+        subtitle: Text(element.example != null
+            ? "exemple : ${element.example}"
+            : "(pas d'exemple)"),
       ));
     });
 
