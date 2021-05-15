@@ -17,13 +17,19 @@ class StringData {
     switch (this._lang) {
       case LanguageConst.FR:
         {
-          this.setFrStringData();
+          this._setFrStringData();
+        }
+        break;
+
+      case LanguageConst.EN:
+        {
+          this._setEnStringData();
         }
         break;
 
       default:
         {
-          this.setFrStringData();
+          this._setEnStringData();
         }
         break;
     }
@@ -33,7 +39,13 @@ class StringData {
     return this._lang;
   }
 
-  void setFrStringData() {
+  /// FR data string.
+  void _setFrStringData() {
+    this.data = {"title": "Xico"};
+  }
+
+  /// EN data string.
+  void _setEnStringData() {
     this.data = {"title": "Xico"};
   }
 }
