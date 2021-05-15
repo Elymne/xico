@@ -3,6 +3,12 @@ import 'package:stacked/stacked.dart';
 import 'package:xico/src/definitions/widgets/definition_card_no_data/definition_card_no_data_view_model.dart';
 
 class DefinitionCardNoData extends StatelessWidget {
+  final String message;
+
+  DefinitionCardNoData({
+    @required this.message,
+  });
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<DefinitionCardNoDataViewModel>.reactive(
@@ -11,7 +17,7 @@ class DefinitionCardNoData extends StatelessWidget {
           children: [
             ListTile(
               leading: Icon(Icons.dangerous),
-              title: Text("Pas de définition"),
+              title: Text(this.message),
               subtitle: Text(""),
             )
           ],
