@@ -19,6 +19,8 @@ class DefinitionPageViewModel extends BaseViewModel {
   int _state = 0;
   int get state => _state;
 
+  String _text = "";
+
   void onDefinitionSearchFieldUpdated(String text) {
     if (text == "") {
       _noSearching();
@@ -29,13 +31,19 @@ class DefinitionPageViewModel extends BaseViewModel {
       _searching();
 
       definitionRepository.fetchDefinitions(text).then((data) {
-        log("data founded for : $text");
-        _updateData(data);
+        if (_text == text) {
+          log("data founded for : $text");
+          _updateData(data);
+        }
       }).catchError((onError) {
-        log('error catch : $onError');
-        _resetData();
+        if (_text == text) {
+          log('error catch : $onError');
+          _resetData();
+        }
       });
     }
+
+    this._text = text;
   }
 
   void _searching() {
