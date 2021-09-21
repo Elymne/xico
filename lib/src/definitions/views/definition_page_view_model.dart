@@ -7,18 +7,13 @@ import 'dart:developer';
 class DefinitionPageViewModel extends BaseViewModel {
   DefinitionRepository definitionRepository = Injector.getInjector().get<DefinitionRepository>();
 
-  static const int NO_SEARCHING = 0;
-  static const int SEARCHING = 1;
-  static const int FOUNDED = 2;
-  static const int NOT_FOUNDED = 3;
+  List<Meaning> _currentMeanings = [];
+  List<Meaning> get currentMeanings => _currentMeanings;
 
-  List<Meaning> _meanings = [];
-  List<Meaning> get meanings => _meanings;
+  DefinitionPageState _currentState = DefinitionPageState.NO_SEARCHING;
+  DefinitionPageState get currentState => _currentState;
 
-  int _state = 0;
-  int get state => _state;
-
-  String _text = "";
+  String _currentText = "";
 
   void onDefinitionSearchFieldUpdated(String text) {
     if (text == "") _noSearching();
@@ -28,42 +23,44 @@ class DefinitionPageViewModel extends BaseViewModel {
       _searching();
 
       definitionRepository.fetchDefinitions(text).then((data) {
-        if (_text == text) {
+        if (_currentText == text) {
           log("data founded for : $text");
           _updateData(data);
         }
       }).catchError((onError) {
-        if (_text == text) {
+        if (_currentText == text) {
           log('error catch : $onError');
           _resetData();
         }
       });
     }
 
-    this._text = text;
+    this._currentText = text;
   }
 
   void _searching() {
     log("Searching");
-    this._state = SEARCHING;
+    this._currentState = DefinitionPageState.SEARCHING;
     notifyListeners();
   }
 
   void _noSearching() {
     log("no searching");
-    this._state = NO_SEARCHING;
+    this._currentState = DefinitionPageState.NO_SEARCHING;
     notifyListeners();
   }
 
   void _updateData(List<Meaning> meanings) {
-    this._meanings = meanings;
-    this._state = FOUNDED;
+    this._currentMeanings = meanings;
+    this._currentState = DefinitionPageState.FOUNDED;
     notifyListeners();
   }
 
   void _resetData() {
-    this._meanings = [];
-    this._state = NOT_FOUNDED;
+    this._currentMeanings = [];
+    this._currentState = DefinitionPageState.NOT_FOUNDED;
     notifyListeners();
   }
 }
+
+enum DefinitionPageState { NO_SEARCHING, SEARCHING, FOUNDED, NOT_FOUNDED }

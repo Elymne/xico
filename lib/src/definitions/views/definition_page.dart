@@ -30,7 +30,7 @@ class _DefinitionPageState extends State<DefinitionPage> {
               },
             ),
           ),
-          Expanded(child: _displayDefinitions(model.meanings, model.state)),
+          Expanded(child: _displayDefinitions(model.currentMeanings, model.currentState)),
         ],
       ),
       viewModelBuilder: () => DefinitionPageViewModel(),
@@ -38,20 +38,20 @@ class _DefinitionPageState extends State<DefinitionPage> {
   }
 
   /// create a widget from data recovered from ViewModel.
-  Widget _displayDefinitions(List<Meaning> meanings, int state) {
+  Widget _displayDefinitions(List<Meaning> meanings, DefinitionPageState state) {
     switch (state) {
-      case DefinitionPageViewModel.NO_SEARCHING:
+      case DefinitionPageState.NO_SEARCHING:
         return DefinitionCardNoData(message: "Cherchez une définition");
-      case DefinitionPageViewModel.SEARCHING:
+      case DefinitionPageState.SEARCHING:
         return Center(child: CircularProgressIndicator());
-      case DefinitionPageViewModel.FOUNDED:
+      case DefinitionPageState.FOUNDED:
         return ListView.builder(
           itemCount: meanings.length,
           itemBuilder: (context, index) {
             return DefinitionCard(meaning: meanings[index]);
           },
         );
-      case DefinitionPageViewModel.NOT_FOUNDED:
+      case DefinitionPageState.NOT_FOUNDED:
         return DefinitionCardNoData(message: "Définition non trouvé");
       default:
         return DefinitionCardNoData(message: "Undefined state");
