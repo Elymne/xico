@@ -4,6 +4,7 @@ import 'package:xico/core/module_container.dart';
 import 'package:xico/core/resources/language_const.dart';
 import 'package:xico/core/resources/string_data.dart';
 import 'package:xico/core/router.dart';
+import 'package:xico/src/app.dart';
 
 void main() {
   // Init Injector.
@@ -16,20 +17,5 @@ void main() {
   StringData stringData = Injector.getInjector().get<StringData>();
   stringData.setLang(LanguageConst.FR);
 
-  // Launch app.
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Xico',
-      theme: ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      initialRoute: "home-bis",
-      onGenerateRoute: RouterFluro.router.generator,
-    );
-  }
+  runApp(App());
 }

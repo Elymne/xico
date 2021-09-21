@@ -20,8 +20,9 @@ class _DefinitionPageState extends State<DefinitionPage> {
             margin: EdgeInsets.all(20),
             child: TextField(
               decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Cherchez une définition'),
+                border: OutlineInputBorder(),
+                hintText: 'Cherchez une définition',
+              ),
               onChanged: (text) {
                 setState(() {
                   model.onDefinitionSearchFieldUpdated(text);
@@ -29,49 +30,31 @@ class _DefinitionPageState extends State<DefinitionPage> {
               },
             ),
           ),
-          Expanded(child: _displayResult(model.meanings, model.state)),
+          Expanded(child: _displayDefinitions(model.meanings, model.state)),
         ],
       ),
       viewModelBuilder: () => DefinitionPageViewModel(),
     );
   }
 
-  Widget _displayResult(List<Meaning> meanings, int state) {
+  /// create a widget from data recovered from ViewModel.
+  Widget _displayDefinitions(List<Meaning> meanings, int state) {
     switch (state) {
       case DefinitionPageViewModel.NO_SEARCHING:
-        {
-          return DefinitionCardNoData(message: "Cherchez une définition");
-        }
-        break;
-
+        return DefinitionCardNoData(message: "Cherchez une définition");
       case DefinitionPageViewModel.SEARCHING:
-        {
-          return Center(child: CircularProgressIndicator());
-        }
-        break;
-
+        return Center(child: CircularProgressIndicator());
       case DefinitionPageViewModel.FOUNDED:
-        {
-          return ListView.builder(
-            itemCount: meanings.length,
-            itemBuilder: (context, index) {
-              return DefinitionCard(meaning: meanings[index]);
-            },
-          );
-        }
-        break;
-
+        return ListView.builder(
+          itemCount: meanings.length,
+          itemBuilder: (context, index) {
+            return DefinitionCard(meaning: meanings[index]);
+          },
+        );
       case DefinitionPageViewModel.NOT_FOUNDED:
-        {
-          return DefinitionCardNoData(message: "Définition non trouvé");
-        }
-        break;
-
+        return DefinitionCardNoData(message: "Définition non trouvé");
       default:
-        {
-          return DefinitionCardNoData(message: "Undefined state");
-        }
-        break;
+        return DefinitionCardNoData(message: "Undefined state");
     }
   }
 }

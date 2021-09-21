@@ -5,8 +5,7 @@ import 'package:xico/core/meanings/models/meaning.dart';
 import 'dart:developer';
 
 class DefinitionPageViewModel extends BaseViewModel {
-  DefinitionRepository definitionRepository =
-      Injector.getInjector().get<DefinitionRepository>();
+  DefinitionRepository definitionRepository = Injector.getInjector().get<DefinitionRepository>();
 
   static const int NO_SEARCHING = 0;
   static const int SEARCHING = 1;
@@ -22,9 +21,7 @@ class DefinitionPageViewModel extends BaseViewModel {
   String _text = "";
 
   void onDefinitionSearchFieldUpdated(String text) {
-    if (text == "") {
-      _noSearching();
-    }
+    if (text == "") _noSearching();
 
     if (text != "") {
       log("searching for : $text");

@@ -5,14 +5,9 @@ import 'package:xico/core/meanings/models/meaning.dart';
 
 class DefinitionRepository extends AbstractRepository<Meaning> {
   Future<List<Meaning>> fetchDefinitions(String text) async {
-    final response =
-        await http.get('https://api.dictionaryapi.dev/api/v2/entries/fr/$text');
-
+    final response = await http.get('https://api.dictionaryapi.dev/api/v2/entries/fr/$text');
     if (response.statusCode == 200)
-      return json
-          .decode(response.body)
-          .map<Meaning>((elem) => Meaning.fromJson(elem))
-          .toList();
+      return json.decode(response.body).map<Meaning>((elem) => Meaning.fromJson(elem)).toList();
     else
       throw Exception('Failed to load meanings');
   }

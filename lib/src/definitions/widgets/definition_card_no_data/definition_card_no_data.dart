@@ -16,7 +16,6 @@ class DefinitionCardNoData extends StatelessWidget {
         child: Column(
           children: [
             ListTile(
-              leading: Icon(Icons.dangerous),
               title: Text(this.message),
               subtitle: Text(""),
             )
