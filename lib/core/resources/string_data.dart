@@ -16,21 +16,13 @@ class StringData {
 
     switch (this._lang) {
       case LanguageConst.FR:
-        {
-          this._setFrStringData();
-        }
+        this._setFrStringData();
         break;
-
       case LanguageConst.EN:
-        {
-          this._setEnStringData();
-        }
+        this._setEnStringData();
         break;
-
       default:
-        {
-          this._setEnStringData();
-        }
+        this._setEnStringData();
         break;
     }
   }

@@ -4,7 +4,7 @@ import 'package:xico/app/books/views/book_page_widget.dart';
 import 'package:xico/app/definitions/views/definition_page.dart';
 import 'package:xico/app/home/views/home_view_model.dart';
 
-class HomeViewBis extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(

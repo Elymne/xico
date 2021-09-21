@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:xico/core/abstract_repository.dart';
-import 'package:xico/core/meanings/models/meaning.dart';
+import 'package:xico/domain/abstract_repository.dart';
+import 'package:xico/domain/definitions/entities/meaning.dart';
 
-class DefinitionRepository extends AbstractRepository<Meaning> {
+class DefinitionRepository implements AbstractRepository<Meaning> {
   Future<List<Meaning>> fetchDefinitions(String text) async {
     final response = await http.get('https://api.dictionaryapi.dev/api/v2/entries/fr/$text');
     if (response.statusCode == 200)
