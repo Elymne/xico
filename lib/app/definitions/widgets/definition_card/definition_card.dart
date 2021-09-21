@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:xico/app/definitions/widgets/definition_card/definition_card_view_model.dart';
 import 'package:xico/core/meanings/models/meaning.dart';
-import 'package:xico/src/definitions/widgets/definition_card/definition_card_view_model.dart';
 
 class DefinitionCard extends StatelessWidget {
   final Meaning meaning;
@@ -28,12 +28,8 @@ class DefinitionCard extends StatelessWidget {
     this.meaning.definitions.forEach((element) {
       result.add(ListTile(
         leading: Icon(Icons.album),
-        title: Text(element.definition != null
-            ? element.definition
-            : "(données non trouvées)"),
-        subtitle: Text(element.example != null
-            ? "exemple : ${element.example}"
-            : "(pas d'exemple)"),
+        title: Text(element.definition != null ? element.definition : "(données non trouvées)"),
+        subtitle: Text(element.example != null ? "exemple : ${element.example}" : "(pas d'exemple)"),
       ));
     });
 

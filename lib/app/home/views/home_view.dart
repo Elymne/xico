@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:xico/src/home/views/home_view_model.dart';
+import 'package:xico/app/home/views/home_view_model.dart';
 
 class HomeView extends StatelessWidget {
   @override

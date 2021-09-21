@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:xico/src/books/views/book_page_widget_view_model.dart';
+import 'package:xico/app/books/views/book_page_widget_view_model.dart';
 
 class BookPageView extends StatelessWidget {
   @override
