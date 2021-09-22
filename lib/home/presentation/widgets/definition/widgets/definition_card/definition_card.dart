@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:xico/app/definitions/widgets/definition_card/definition_card_view_model.dart';
-import 'package:xico/core/meanings/models/meaning.dart';
+import 'package:xico/home/domain/definitions/entities/meaning.dart';
+import 'package:xico/home/presentation/widgets/definition/widgets/definition_card/definition_card_view_model.dart';
 
 class DefinitionCard extends StatelessWidget {
   final Meaning meaning;

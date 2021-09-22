@@ -1,8 +1,9 @@
 import 'package:flutter_simple_dependency_injection/injector.dart';
 import 'package:stacked/stacked.dart';
-import 'package:xico/core/meanings/infrastructures/meaning_repository.dart';
-import 'package:xico/core/meanings/models/meaning.dart';
+import 'package:xico/home/domain/definitions/entities/meaning.dart';
 import 'dart:developer';
+
+import 'package:xico/home/infrastructure/definitions/repositories/remote/meaning_repository.dart';
 
 class DefinitionPageViewModel extends BaseViewModel {
   DefinitionRepository definitionRepository = Injector.getInjector().get<DefinitionRepository>();

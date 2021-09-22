@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:xico/app/definitions/widgets/definition_card_no_data/definition_card_no_data_view_model.dart';
+import 'package:xico/home/presentation/widgets/definition/widgets/definition_card_no_data/definition_card_no_data_view_model.dart';
 
 class DefinitionCardNoData extends StatelessWidget {
   final String message;
