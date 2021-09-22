@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:xico/home/domain/abstract_repository.dart';
-import 'package:xico/home/domain/definitions/entities/meaning.dart';
+import 'package:xico/core/abstract_repository.dart';
+import 'package:xico/domain/definitions/entities/meaning.dart';
 
 class DefinitionRepository implements AbstractRepository<Meaning> {
   Future<List<Meaning>> fetchDefinitions(String text) async {

@@ -5,10 +5,7 @@ class Definition {
   final List<dynamic> synonyms;
   final String example;
 
-  Definition(
-      {@required this.definition,
-      @required this.synonyms,
-      @required this.example});
+  Definition({@required this.definition, @required this.synonyms, @required this.example});
 
   factory Definition.fromJson(Map<String, dynamic> json) {
     return Definition(

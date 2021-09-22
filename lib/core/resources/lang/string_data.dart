@@ -1,24 +1,19 @@
-import 'package:xico/core/resources/language_const.dart';
-
 class StringData {
   static final StringData _stringData = StringData._internal();
-  String _lang;
+  Lang _lang;
   Map<String, String> data;
 
-  factory StringData() {
-    return _stringData;
-  }
+  factory StringData() => _stringData;
 
   StringData._internal();
 
-  void setLang(String lang) {
+  void setLang(Lang lang) {
     this._lang = lang;
-
     switch (this._lang) {
-      case LanguageConst.FR:
+      case Lang.FR:
         this._setFrStringData();
         break;
-      case LanguageConst.EN:
+      case Lang.EN:
         this._setEnStringData();
         break;
       default:
@@ -27,17 +22,13 @@ class StringData {
     }
   }
 
-  String getLang() {
-    return this._lang;
-  }
+  Lang getLang() => this._lang;
 
   /// FR data string.
-  void _setFrStringData() {
-    this.data = {"title": "Xico"};
-  }
+  void _setFrStringData() => this.data = {"title": "Xico"};
 
   /// EN data string.
-  void _setEnStringData() {
-    this.data = {"title": "Xico"};
-  }
+  void _setEnStringData() => this.data = {"title": "Xico"};
 }
+
+enum Lang { EN, FR }

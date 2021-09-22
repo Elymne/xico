@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_simple_dependency_injection/injector.dart';
-import 'package:xico/di/module_container.dart';
-import 'package:xico/core/resources/language_const.dart';
-import 'package:xico/core/resources/string_data.dart';
+import 'package:xico/core/di/module_container.dart';
+import 'package:xico/core/resources/lang/string_data.dart';
 import 'package:xico/core/router.dart';
 import 'package:xico/app.dart';
 
@@ -15,7 +14,7 @@ void main() {
 
   // set display string language
   StringData stringData = Injector.getInjector().get<StringData>();
-  stringData.setLang(LanguageConst.FR);
+  stringData.setLang(Lang.FR);
 
   runApp(App());
 }
