@@ -16,53 +16,39 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
-
 environment:
     sdk: '>=2.7.0 <3.0.0'
-
 dependencies:
     flutter:
         sdk: flutter
-
     # The following adds the Cupertino Icons font to your application.
     # Use with the CupertinoIcons class for iOS style icons.
     cupertino_icons: any
-
     # ViewModel dependency.
     stacked: any
-
     # DI dependency.
     flutter_simple_dependency_injection: any
-
     # Router dependency.
     fluro: any
-
     # SQLite dependency.
     sqflite: any
-
     # Http Fetch.
     http: any
-
     # Temporary directory dependency.
     path_provider: any
-
 dev_dependencies:
     flutter_test:
         sdk: flutter
-
     # Generating file lib.
     build_runner: any
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter.
 flutter:
     # The following line ensures that the Material Icons font is
     # included with your application, so that you can use the icons in
     # the material Icons class.
     uses-material-design: true
-
     # To add assets to your application, add an assets section, like this:
     # assets:
     #   - images/a_dot_burr.jpeg

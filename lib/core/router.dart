@@ -1,23 +1,13 @@
 import 'package:fluro/fluro.dart' as Fluro;
 import 'package:flutter/material.dart';
-import 'package:xico/src/home/views/home_view.dart';
-import 'package:xico/src/home/views/home_view_bis.dart';
+import 'package:xico/application/home/home_page.dart';
 
 class RouterFluro {
   static Fluro.Router router = Fluro.Router();
 
-  static Fluro.Handler homeHandler = Fluro.Handler(
-      handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return HomeView();
-  });
-
-  static Fluro.Handler homeBisHandler = Fluro.Handler(
-      handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return HomeViewBis();
-  });
+  static Fluro.Handler homeHandler = Fluro.Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) => HomePage());
 
   static void defineRoutes() {
     router.define("home", handler: homeHandler);
-    router.define("home-bis", handler: homeBisHandler);
   }
 }

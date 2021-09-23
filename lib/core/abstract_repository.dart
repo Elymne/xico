@@ -1,6 +1,6 @@
-abstract class AbstractRepository<T> {
-  Future<List<T>> read(String keyword);
+abstract class AbstractRepository<T, R> {
+  Future<List<T>> read(R keyword);
   Future<T> write(T keyword);
-  Future<List<T>> update(String keyword);
-  Future<List<T>> delete(String keyword);
+  Future<List<T>> update(R keyword);
+  Future<List<T>> delete(R keyword);
 }
