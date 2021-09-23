@@ -3,7 +3,7 @@ import 'package:stacked/stacked.dart';
 import 'package:xico/application/home/widgets/definition/definition_page_view_model.dart';
 import 'package:xico/application/home/widgets/definition/widgets/definition_card/definition_card.dart';
 import 'package:xico/application/home/widgets/definition/widgets/definition_card_no_data/definition_card_no_data.dart';
-import 'package:xico/domain/definitions/entities/meaning.dart';
+import 'package:xico/domain/definitions/entities/word.dart';
 
 class DefinitionPage extends StatefulWidget {
   @override
@@ -38,7 +38,7 @@ class _DefinitionPageState extends State<DefinitionPage> {
   }
 
   /// create a widget from data recovered from ViewModel.
-  Widget _displayDefinitions(List<Meaning> meanings, DefinitionPageState state) {
+  Widget _displayDefinitions(List<Word> words, DefinitionPageState state) {
     switch (state) {
       case DefinitionPageState.NO_SEARCHING:
         return DefinitionCardNoData(message: "Cherchez une définition");
@@ -46,9 +46,9 @@ class _DefinitionPageState extends State<DefinitionPage> {
         return Center(child: CircularProgressIndicator());
       case DefinitionPageState.FOUNDED:
         return ListView.builder(
-          itemCount: meanings.length,
+          itemCount: words.length,
           itemBuilder: (context, index) {
-            return DefinitionCard(meaning: meanings[index]);
+            return DefinitionCard(word: words[index]);
           },
         );
       case DefinitionPageState.NOT_FOUNDED:

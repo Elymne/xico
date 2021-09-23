@@ -9,7 +9,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: "home-bis",
+      initialRoute: "home",
       onGenerateRoute: RouterFluro.router.generator,
     );
   }

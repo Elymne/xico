@@ -1,15 +1,14 @@
 import 'package:flutter_simple_dependency_injection/injector.dart';
 import 'package:stacked/stacked.dart';
-import 'package:xico/domain/definitions/entities/meaning.dart';
+import 'package:xico/domain/definitions/entities/word.dart';
 import 'dart:developer';
-
-import 'package:xico/infrastructure/definitions/repositories/remote/meaning_repository.dart';
+import 'package:xico/domain/definitions/usecases/word_usecases.dart';
 
 class DefinitionPageViewModel extends BaseViewModel {
-  DefinitionRepository definitionRepository = Injector.getInjector().get<DefinitionRepository>();
+  final WordUsecases wordUsecases = Injector.getInjector().get<WordUsecases>();
 
-  List<Meaning> _currentMeanings = [];
-  List<Meaning> get currentMeanings => _currentMeanings;
+  List<Word> _currentWords = [];
+  List<Word> get currentMeanings => _currentWords;
 
   DefinitionPageState _currentState = DefinitionPageState.NO_SEARCHING;
   DefinitionPageState get currentState => _currentState;
@@ -23,7 +22,7 @@ class DefinitionPageViewModel extends BaseViewModel {
       log("searching for : $text");
       _searching();
 
-      definitionRepository.fetchDefinitions(text).then((data) {
+      wordUsecases.getWords(text).then((data) {
         if (_currentText == text) {
           log("data founded for : $text");
           _updateData(data);
@@ -51,14 +50,14 @@ class DefinitionPageViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  void _updateData(List<Meaning> meanings) {
-    this._currentMeanings = meanings;
+  void _updateData(List<Word> words) {
+    this._currentWords = words;
     this._currentState = DefinitionPageState.FOUNDED;
     notifyListeners();
   }
 
   void _resetData() {
-    this._currentMeanings = [];
+    this._currentWords = [];
     this._currentState = DefinitionPageState.NOT_FOUNDED;
     notifyListeners();
   }
