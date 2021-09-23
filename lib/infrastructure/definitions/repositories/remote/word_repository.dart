@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:flutter_simple_dependency_injection/injector.dart';
 import 'package:http/http.dart' as http;
 import 'package:xico/core/abstract_repository.dart';
@@ -12,11 +13,13 @@ class WordRepository implements AbstractRepository<Word, String> {
   @override
   Future<List<Word>> read(String keyword) async {
     try {
-      final response = await http.get('${ApiUri.googleDef}$keyword');
+      final response = await http.get('https://api.dictionaryapi.dev/api/v2/entries/fr/$keyword');
       if (response.statusCode == 200)
         return json.decode(response.body).map((meanings) => definitionRepository.createWords(meanings)).toList();
-      else
+      else {
+        log('response : ${response.statusCode}');
         throw Exception('Failed to load Words');
+      }
     } catch (e) {
       throw Exception(e);
     }
