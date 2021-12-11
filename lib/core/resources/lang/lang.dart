@@ -1,3 +1,3 @@
-class Lang {
-  String get appName => 'Xico';
+abstract class Lang {
+  Map<String, String> get getTr;
 }

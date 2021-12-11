@@ -7,4 +7,12 @@ class Word {
   final List<Definition> definitions;
 
   Word({@required this.word, @required this.genre, @required this.definitions});
+
+  factory Word.fromJson(Map<String, dynamic> json, String word) {
+    return Word(
+      word: word,
+      genre: json["partOfSpeech"],
+      definitions: json["definitions"].map<Definition>((elem) => Definition.fromJson(elem)).toList(),
+    );
+  }
 }

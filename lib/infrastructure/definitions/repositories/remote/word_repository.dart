@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:flutter_simple_dependency_injection/injector.dart';
 import 'package:http/http.dart' as http;
 import 'package:xico/core/abstract_repository.dart';
-import 'package:xico/core/resources/uri/api_uri.dart';
 import 'package:xico/domain/definitions/entities/word.dart';
 import 'package:xico/infrastructure/definitions/factories/word_factory.dart';
 
